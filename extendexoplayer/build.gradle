@@ -1,8 +1,8 @@
 apply plugin: 'com.android.library'
-apply plugin: 'com.github.dcendents.android-maven'
+
 
 android {
-    compileSdkVersion 30
+    compileSdk 33
 
     defaultConfig {
         minSdkVersion 21
@@ -33,7 +33,7 @@ android {
     externalNativeBuild {
         cmake {
             path "src/main/cpp/CMakeLists.txt"
-            version "3.10.2"
+            version "3.18.1"
         }
     }
 
@@ -43,6 +43,7 @@ android {
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
         }
     }
+    ndkVersion '21.4.7075529'
 }
 
 dependencies {

@@ -15,6 +15,8 @@ import android.view.WindowManager;
 import com.wh.extendexoplayer.player.DefaultExoPlayer;
 import com.wh.extendexoplayer.widget.TextureRendererView;
 
+import java.io.IOException;
+
 public class VideoPlayerActivity extends Activity {
 
     private static final String DATA = "data";
@@ -52,10 +54,14 @@ public class VideoPlayerActivity extends Activity {
         defaultExoPlayer = new DefaultExoPlayer.Builder().rendererView(rendererView).fitXY(true).build();
         defaultExoPlayer.setClearColor(0.5f,0.5f,0.5f);
 
-        loadPrevImage();
+        try {
+            loadPrevImage();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     }
 
-    private void loadPrevImage() {
+    private void loadPrevImage() throws IOException {
         MediaMetadataRetriever retriever = new MediaMetadataRetriever();
         Bitmap bitmap = null;
         try {
